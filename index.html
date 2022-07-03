@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <title>Frontend Mentor | FAQ Accordion Card</title>
+    <link rel="stylesheet" type="text/css" href="./pages/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <img class="attached" src="./images/illustration-box-desktop.svg" alt="a box with a logo">
+      <div class="card">
+        <div class="images">
+          <img class="main-image" src="./images/illustration-woman-online-desktop.svg" alt="woman online">
+          <img class="main-image" src="./images/illustration-woman-online-mobile.svg" alt="woman online">
+        </div>
+        <div class="faq">
+          <h1>FAQ</h1>
+          <div class="inquiries">
+            <div class="inquiry">
+              <div data-inquiry-box id="0" class="question">  
+                <h5 data-heading>How many team members can I invite?</h5>
+                <img data-image src="./images/icon-arrow-down.svg" alt="icon arrow down">
+              </div>
+              <span data-inquiry-submit class="answer 0">
+                You can invite up to 2 additional users on the Free plan. There is no limit on team members for the Premium plan.
+              </span>
+            </div>
+            <div class="inquiry">
+              <div data-inquiry-box id="1" class="question">  
+                <h5 data-heading>What is the maximum file upload size?</h5>
+                <img data-image src="./images/icon-arrow-down.svg" alt="icon arrow down">
+              </div>
+              <span data-inquiry-submit class="answer 1">
+                No more than 2GB. All files in your account must fit your allotted storage space.
+              </span>
+            </div>
+            <div class="inquiry">
+              <div data-inquiry-box id="2" class="question">  
+                <h5 data-heading>How do I reset my password?</h5>
+                <img data-image src="./images/icon-arrow-down.svg" alt="icon arrow down">
+              </div>
+              <span data-inquiry-submit class="answer 2">
+                Click “Forgot password” from the login page or “Change password” from your profile page.A reset link will be emailed to you.
+              </span>
+            </div>
+            <div class="inquiry">
+              <div data-inquiry-box id="3" class="question">  
+                <h5 data-heading>Can I cancel my subscription?</h5>
+                <img data-image src="./images/icon-arrow-down.svg" alt="icon arrow down">
+              </div>
+              <span data-inquiry-submit class="answer 3">
+                Yes! Send us a message and we’ll process your request no questions asked.
+              </span>
+            </div>
+            <div class="inquiry">
+              <div data-inquiry-box id="4" class="question">  
+                <h5 data-heading>Do you provide additional support?</h5>
+                <img data-image src="./images/icon-arrow-down.svg" alt="icon arrow down">
+              </div>
+              <span data-inquiry-submit class="answer 4">
+                Chat and email support is available 24/7. Phone lines are open during normal business hours.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+        Coded by <a href="https://github.com/yusuff-fatorisa/faq">Yusuff Fatorisa</a>.
+      </div>
+    </div>
+    <script>
+      const inquiryRequest = document.querySelectorAll("[data-inquiry-box]");
+      const inquiryAnswer = document.querySelectorAll("[data-inquiry-submit]");
+      const requestHeading = document.querySelectorAll("[data-heading]");
+      const requestImage = document.querySelectorAll("[data-image]");
+
+      for (let requestNum = 0; requestNum < inquiryRequest.length; requestNum++) {
+        requestImage[requestNum].addEventListener("click", () => {
+          for (let answer of inquiryAnswer) {
+            if (answer.classList.contains(requestNum)) {
+              answer.classList.toggle("show");
+              answer.classList.remove("hide");
+            }
+            else {
+              answer.classList.remove("show");
+              answer.classList.add("hide");
+            }
+          }
+
+          for (let testNum = 0; testNum < inquiryAnswer.length; testNum++) {
+            if (inquiryAnswer[testNum].classList.contains("show")) {
+              requestHeading[testNum].style.fontWeight = "bolder";
+              requestImage[testNum].style.transform = "rotate(-180deg)";
+            }
+            else {
+              requestHeading[testNum].style.fontWeight = "unset";
+              requestImage[testNum].style.transform = "rotate(360deg)";
+            }
+          }
+        })
+      }
+    </script>
+  </body>
+</html>
